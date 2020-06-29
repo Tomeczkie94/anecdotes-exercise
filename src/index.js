@@ -24,15 +24,22 @@ const App = (props) => {
   const nextAnecdote = () => {
     setSelected(getRandomInteger(0, lastIndexOfAnecdotes))
   }
-console.log(selected)
-  // const vote = () => {
-  //
-  // }
+
+  const VotesCounter = (props) => {
+    return (
+      <p>has X votes.</p>
+    )
+  }
+
+  const votesAmount = () => {
+    return
+  }
 
   return (
     <div>
       <Header text={'Anecdote of the day'} />
       {props.anecdotes[selected]}
+      <VotesCounter />
       <Button /*handleClick={nextAnecdote}*/ text={'Vote'} />
       <Button handleClick={nextAnecdote} text={'Next anecdote'} />
       <Header text={'Anecdote with most votes'} />

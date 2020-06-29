@@ -15,9 +15,19 @@ const Header = (props) => {
 const App = (props) => {
   const [selected, setSelected] = useState(0)
 
-  const nextAnecdote = () => {
-    setSelected(selected + 1)
+  const getRandomInteger = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+  const lastIndexOfAnecdotes = props.anecdotes.length - 1;
+
+  const nextAnecdote = () => {
+    setSelected(selected + getRandomInteger(0, lastIndexOfAnecdotes))
+  }
+console.log(getRandomInteger(0, lastIndexOfAnecdotes))
+  // const vote = () => {
+  //
+  // }
 
   return (
     <div>

@@ -14,6 +14,7 @@ const Header = (props) => {
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(0)
 
   const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -27,12 +28,12 @@ const App = (props) => {
 
   const VotesCounter = (props) => {
     return (
-      <p>has X votes.</p>
+      <p>has {votes} votes.</p>
     )
   }
 
-  const votesAmount = () => {
-    return
+  const vote = () => {
+    setVotes(votes + 1)
   }
 
   return (
@@ -40,7 +41,7 @@ const App = (props) => {
       <Header text={'Anecdote of the day'} />
       {props.anecdotes[selected]}
       <VotesCounter />
-      <Button /*handleClick={nextAnecdote}*/ text={'Vote'} />
+      <Button handleClick={vote} text={'Vote'} />
       <Button handleClick={nextAnecdote} text={'Next anecdote'} />
       <Header text={'Anecdote with most votes'} />
     </div>

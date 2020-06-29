@@ -22,9 +22,9 @@ const App = (props) => {
   const lastIndexOfAnecdotes = props.anecdotes.length - 1;
 
   const nextAnecdote = () => {
-    setSelected(selected + getRandomInteger(0, lastIndexOfAnecdotes))
+    setSelected(getRandomInteger(0, lastIndexOfAnecdotes))
   }
-console.log(getRandomInteger(0, lastIndexOfAnecdotes))
+console.log(selected)
   // const vote = () => {
   //
   // }

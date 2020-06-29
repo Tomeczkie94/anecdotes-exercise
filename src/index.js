@@ -6,19 +6,26 @@ const Button = (props) =>
     <button onClick={props.handleClick}>{props.text}</button>
   )
 
+const Header = (props) => {
+  return (
+    <h1>{props.text}</h1>
+  )
+}
+
 const App = (props) => {
   const [selected, setSelected] = useState(0)
 
-
   const nextAnecdote = () => {
-
-    setSelected(selected + randomNumber)
+    setSelected(selected + 1)
   }
 
   return (
     <div>
+      <Header text={'Anecdote of the day'} />
       {props.anecdotes[selected]}
+      <Button /*handleClick={nextAnecdote}*/ text={'Vote'} />
       <Button handleClick={nextAnecdote} text={'Next anecdote'} />
+      <Header text={'Anecdote with most votes'} />
     </div>
   )
 }

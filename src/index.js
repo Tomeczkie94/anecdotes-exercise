@@ -12,6 +12,7 @@ const Header = (props) => {
   )
 }
 
+
 const App = (props) => {
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(0)
@@ -21,6 +22,8 @@ const App = (props) => {
   }
 
   const lastIndexOfAnecdotes = props.anecdotes.length - 1;
+
+  const votesArray = Array.apply(null, Array(props.anecdotes.length)).map(Number.prototype.valueOf,0);
 
   const nextAnecdote = () => {
     setSelected(getRandomInteger(0, lastIndexOfAnecdotes))

@@ -34,7 +34,7 @@ const App = (props) => {
 
   const VotesCounter = (props) => {
     return (
-      <p>has {votes[selected]} votes.</p>
+      <p>has {props.text} votes.</p>
     )
   }
 
@@ -47,12 +47,12 @@ const App = (props) => {
     <div>
       <Header text={'Anecdote of the day'} />
       {props.anecdotes[selected]}
-      <VotesCounter />
+      <VotesCounter text={copyVotesArray[selected]}/>
       <Button handleClick={vote} text={'Vote'} />
       <Button handleClick={nextAnecdote} text={'Next anecdote'} />
       <Header text={'Anecdote with most votes'} />
       {props.anecdotes[indexOfMostVotes]}
-      <VotesCounter />
+      <VotesCounter text={copyVotesArray[indexOfMostVotes]} />
     </div>
   )
 }

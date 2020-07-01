@@ -15,7 +15,9 @@ const Header = (props) => {
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(0)
+  const [votes, setVotes] = useState(Array.apply(null, Array(props.anecdotes.length)).map(Number.prototype.valueOf,0))
+
+  const copyVotesArray = [...votes];
 
   const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -23,20 +25,22 @@ const App = (props) => {
 
   const lastIndexOfAnecdotes = props.anecdotes.length - 1;
 
-  const votesArray = Array.apply(null, Array(props.anecdotes.length)).map(Number.prototype.valueOf,0);
-
   const nextAnecdote = () => {
     setSelected(getRandomInteger(0, lastIndexOfAnecdotes))
   }
 
+  console.log(selected)
+  console.log(copyVotesArray)
+
   const VotesCounter = (props) => {
     return (
-      <p>has {votes} votes.</p>
+      <p>has {copyVotesArray[selected]} votes.</p>
     )
   }
 
   const vote = () => {
-    setVotes(votes + 1)
+    copyVotesArray[selected] += 1
+    setVotes(copyVotesArray)
   }
 
   return (

@@ -12,7 +12,6 @@ const Header = (props) => {
   )
 }
 
-
 const App = (props) => {
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array.apply(null, Array(props.anecdotes.length)).map(Number.prototype.valueOf,0))
@@ -25,16 +24,17 @@ const App = (props) => {
 
   const lastIndexOfAnecdotes = props.anecdotes.length - 1;
 
+  const indexOfMostVotes = copyVotesArray.indexOf(Math.max(...copyVotesArray));
+
   const nextAnecdote = () => {
     setSelected(getRandomInteger(0, lastIndexOfAnecdotes))
   }
 
-  console.log(selected)
-  console.log(copyVotesArray)
+  console.log(indexOfMostVotes)
 
   const VotesCounter = (props) => {
     return (
-      <p>has {copyVotesArray[selected]} votes.</p>
+      <p>has {votes[selected]} votes.</p>
     )
   }
 
@@ -51,6 +51,8 @@ const App = (props) => {
       <Button handleClick={vote} text={'Vote'} />
       <Button handleClick={nextAnecdote} text={'Next anecdote'} />
       <Header text={'Anecdote with most votes'} />
+      {props.anecdotes[indexOfMostVotes]}
+      <VotesCounter />
     </div>
   )
 }

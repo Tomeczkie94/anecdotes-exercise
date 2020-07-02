@@ -4,8 +4,8 @@ import Button from './Button.js';
 import VotesCounter from './VotesCounter.js'
 
 const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(Array.apply(null, Array(props.anecdotes.length)).map(Number.prototype.valueOf,0))
+  const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState(new Array(props.anecdotes.length).fill(0));
   const copyVotesArray = [...votes];
   const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
